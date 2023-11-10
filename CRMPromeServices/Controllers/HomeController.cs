@@ -10,8 +10,14 @@ namespace CRMPromeServices.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            /*
+             Table SQL -----> MVC vs. WebAPI
+             */
 
+
+
+            ViewBag.Title = "Home Page";
+            
             return View();
         }
     }
