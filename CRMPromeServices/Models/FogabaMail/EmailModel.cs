@@ -12,6 +12,11 @@ namespace CRMPromeServices.Controllers
         private string body { get; set; }
 
 
+        public EmailModel()
+        {
+
+        }
+
         public EmailModel(string from, List<string> cc, List<string> cco, string subj, string body)
         {
             this.from = from;
