@@ -27,19 +27,18 @@ namespace CRMPromeServices.Services
             //Inyección de dependencia (inyección de servicios en Entity Framework 4.6.2)
             this._httpClient = new HttpClient();
             //instanciar logAppUri
-        }
 
+            EmailModel emailToSend = new EmailModel();
+            SendMail(emailToSend);
+        }
 
         public void SendMail(EmailModel email)
         {
-
             try
             {
-
-
-                //Serializar el mail a json
-                string json = JSONConverter.(email);
                 
+                //Serializar el mail a json
+                string json = JsonConvert.SerializeObject(email, Formatting.Indented);
 
                 HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
                 this._httpClient.PostAsync(this.logicAppUri, httpContent);
@@ -50,13 +49,8 @@ namespace CRMPromeServices.Services
                 throw new Exception("Error en el envío de mail " + e.Message);
             }
 
-
         }
-
-
-
-
-
+        
 
     }
 }
